@@ -51,6 +51,8 @@ body.black{
 }
 
 #content-box img{
+    max-width: 400px;
+    width: 100%;
     animation: fx-rotate linear 12s infinite;
 }
 
