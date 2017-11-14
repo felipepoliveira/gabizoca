@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body class="black">
-        <div class="flex-container">
+        <div id="main" class="flex-container view view-show">
             <div id="login-box" class="container">
                 <h2>It's<br/> <span class="clear-text">for you</span><br/>Gabizoca</h2>
                 <div class="container center">
@@ -20,22 +20,78 @@
                 </div>
             </div>
         </div>
-        <div id="content-box">
+        <div id="anniversary-box" class="view">
             <img src="images/flower.png"/>
             <h2>TE AMO</h2>
+        </div>
+        <div id="greenday-box" class="view">
+            <div class="images-container" id="greenDayImages">
+                <h2>Green Day</h2>
+            </div>
         </div>
     </body>
     <script>
         var $inputDia = document.querySelector("#inputDia");
         var $inputMes = document.querySelector("#inputMes");
         var $inputAno = document.querySelector("#inputAno");
+        var $main = document.querySelector("#main");
+        var $anniversaryBox = document.querySelector("#anniversary-box");
+        var $greenDayBox = document.querySelector("#greenday-box");
+        var $loginBox = document.querySelector("#login-box");
 
         document.querySelector("#btnheart").addEventListener('click', () => {
-           if(  $inputDia.value === "12" &&
-                $inputMes.value === "11" &&
-                $inputAno.value === "2017"){
-                    document.body.classList.toggle("black");
-                }
+           
+
+            if(openDatingAnniversary()){
+
+            }else if(openGreenDay()){
+
+            }
         });
+
+        function applyPhotos(where, prefix, ext, howMutch){
+            //Remove each child
+            Array(where.querySelectorAll("img")).forEach((c) => {
+                console.log(c);
+            });
+
+            //Apply all images
+            for(let i = 1; i <= howMutch; i++){
+                let image = new Image();
+                image.onload = () => {
+                    setTimeout(() => {
+                        where.appendChild(image);
+                    }, 500);
+                }
+                image.src = "images/" + prefix + "-" + i + "." + ext;
+            }
+
+        }
+
+        function openDatingAnniversary(){
+            if($inputDia.value === "12" && $inputMes.value === "11" && $inputAno.value === "2017"){
+                    document.body.classList.toggle("black");
+                    toggleView($anniversaryBox);
+
+                    return true;
+            }else{
+                return false;
+            }
+        }
+
+        function openGreenDay(){
+            if($inputDia.value === "03" && $inputMes.value === "11" && $inputAno.value === "2017"){
+                toggleView($greenDayBox);
+                applyPhotos(document.querySelector("#greenDayImages"), "gd", "jpg", 9);
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function toggleView(box){
+            $main.classList.toggle("view-show");
+            box.classList.toggle("view-show");
+        }
     </script>
 </html>

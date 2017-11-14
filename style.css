@@ -9,9 +9,15 @@
     to{transform: rotate(360deg)}
 }
 
+@keyframes fade-in{
+    from{opacity : 0}
+    to{opacity: 1}
+}
+
 *{
     color: white;
     font-family: "Ayuma2yk";
+    outline: none;
 }
 
 body{
@@ -41,7 +47,7 @@ body.black{
     width: 100%;
 }
 
-#content-box{
+#anniversary-box{
     color: black;
     position: absolute;
     text-align: center;
@@ -50,13 +56,13 @@ body.black{
     z-index: -1;
 }
 
-#content-box img{
+#anniversary-box img{
     max-width: 400px;
     width: 100%;
     animation: fx-rotate linear 12s infinite;
 }
 
-#content-box *{
+#anniversary-box *{
     color: black;
 }
 
@@ -70,6 +76,20 @@ body.black{
     flex: 1;
 }
 
+#greenday-box img{
+    display: block;
+    width: 100%;
+    margin-bottom: 32px;
+    max-width: 800px;
+    opacity: 1;
+
+    animation: fade-in 4s linear;
+}
+
+#greenday-box img:nth-child(even){
+    margin-left: auto;
+}
+
 h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
@@ -77,13 +97,8 @@ h2{ font-size: 60px;}
 
 #login-box{
     height: 500px;
-    opacity : 1;
 
     transition: opacity 1s;
-}
-
-body:not(.black) #login-box{
-    opacity : 0;
 }
 
 #login-box input{
@@ -119,6 +134,18 @@ input[type=text]{
 
 .ma-lg{
     margin-top: 64px;
+}
+
+.view{
+    display: none;
+    opacity: 0;
+
+    transition: opacity 2s;
+}
+
+.view.view-show{
+    display: unset;
+    opacity: 1;
 }
 
 @media screen and (max-width: 600px){
