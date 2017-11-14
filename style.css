@@ -1,0 +1,129 @@
+@font-face{
+    font-family: 'Ayuma2yk';
+    src: url("fonts/Ayuma2yk.ttf");
+
+}
+
+@keyframes fx-rotate{
+    from{transform: rotate(0deg)}
+    to{transform: rotate(360deg)}
+}
+
+*{
+    color: white;
+    font-family: "Ayuma2yk";
+}
+
+body{
+    background-color: white;
+    margin: 0px;
+
+    transition: background-color 2s;
+}
+
+body.black{
+    background-color: black;
+    
+}
+
+.center{
+    text-align: center;
+}
+
+.clear-text{
+    color: rgb(45, 45, 45);
+}
+
+.container{
+    display: block;
+    margin: auto;
+    max-width: 800px;
+    width: 100%;
+}
+
+#content-box{
+    color: black;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 100vw;
+    z-index: -1;
+}
+
+#content-box img{
+    animation: fx-rotate linear 12s infinite;
+}
+
+#content-box *{
+    color: black;
+}
+
+.flex-container{
+    align-content: center;
+    display: flex;
+    min-height: 100vh;
+}
+
+.flex-container > *:first-child{
+    flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+}
+h2{ font-size: 60px;}
+
+#login-box{
+    height: 500px;
+    opacity : 1;
+
+    transition: opacity 1s;
+}
+
+body:not(.black) #login-box{
+    opacity : 0;
+}
+
+#login-box input{
+    max-width: 160px;
+}
+
+button{
+    color : black;
+    padding: 8px 32px;
+}
+
+button:hover, input[type=text]:hover{
+    box-shadow: 0px 3px 8px white;
+}
+
+button:focus, input[type=text]:focus{
+    box-shadow: 0px 4px 6px #ea2ad4;
+}
+
+button, input[type=text]{
+    border: 2px solid white;
+    border-radius: 32px;
+    font-size: 40px;
+    text-align: center;
+
+    transition: box-shadow .2s;
+}
+
+input[type=text]{
+    background-color: transparent;
+    color: white;
+}
+
+.ma-lg{
+    margin-top: 64px;
+}
+
+@media screen and (max-width: 600px){
+    #login-box input[type=text]{
+        display: block;
+        width: 100%;
+
+        margin: auto;
+    }
+}

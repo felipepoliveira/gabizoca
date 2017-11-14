@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="black">
+        <div class="flex-container">
+            <div id="login-box" class="container">
+                <h2>It's<br/> <span class="clear-text">for you</span><br/>Gabizoca</h2>
+                <div class="container center">
+                    <input type="text" id='inputDia' placeholder="Dia" maxlength="2">
+                    <input type="text" id='inputMes' placeholder="Mês" maxlength="2">                
+                    <input type="text" id='inputAno' placeholder="Ano"  maxlength="4">
+                </div>
+                <div class="container center ma-lg">
+                    <button id="btnheart">♥</button>
+                </div>
+            </div>
+        </div>
+        <div id="content-box">
+            <img src="images/flower.png"/>
+            <h2>TE AMO</h2>
+        </div>
+    </body>
+    <script>
+        var $inputDia = document.querySelector("#inputDia");
+        var $inputMes = document.querySelector("#inputMes");
+        var $inputAno = document.querySelector("#inputAno");
+
+        document.querySelector("#btnheart").addEventListener('click', () => {
+           if(  $inputDia.value === "12" &&
+                $inputMes.value === "11" &&
+                $inputAno.value === "2017"){
+                    document.body.classList.toggle("black");
+                }
+        });
+    </script>
+</html>
