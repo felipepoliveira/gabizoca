@@ -49,20 +49,49 @@
         //Audios
         var audioIbira2017 = document.querySelector("#audioIbira2017");
 
-        document.querySelector("#btnheart").addEventListener('click', () => {
-           
+        var openDateCallbacks = [
+            () => {
+                if($inputDia.value === "12" && $inputMes.value === "11" && $inputAno.value === "2017"){
+                        document.body.classList.toggle("black");
+                        toggleView($anniversaryBox);
 
-            if(openDatingAnniversary()){
+                        return true;
+                }else{
+                    return false;
+                }
+            },
 
-            }else if(openGreenDay()){
+            () => {
+                if(parseInt($inputDia.value) === 3 && $inputMes.value === "11" && $inputAno.value === "2017"){
+                    toggleView($greenDayBox);
+                    applyPhotos(document.querySelector("#greenDayImages"), "gd", "jpg", 9);
+                    return true;
+                }else{
+                    return false;
+                }
+            },
 
-            }else if(openIbira2017()){
-                audioIbira2017.play();
-                toggleOverlay({
-                    "background-image" : "url('images/snow.gif')",
-                    "opacity" : "0.5"
-                });
+            () => {
+                if($inputDia.value === "25" && $inputMes.value === "11" && $inputAno.value === "2017"){
+                    toggleView($ibira2017Box);
+                    audioIbira2017.play();
+                    toggleOverlay({
+                        "background-image" : "url('images/snow.gif')",
+                        "opacity" : "0.5"
+                    });
+                    return true;
+                }else{
+                    return false;
+                }
             }
+        ];
+
+        document.querySelector("#btnheart").addEventListener('click', () => {
+            openDateCallbacks.forEach(cb => {
+                if(cb()){
+                    return;
+                }
+            });
         });
 
         function applyPhotos(where, prefix, ext, howMutch){
@@ -82,36 +111,6 @@
                 image.src = "images/" + prefix + "-" + i + "." + ext;
             }
 
-        }
-
-        function openDatingAnniversary(){
-            if($inputDia.value === "12" && $inputMes.value === "11" && $inputAno.value === "2017"){
-                    document.body.classList.toggle("black");
-                    toggleView($anniversaryBox);
-
-                    return true;
-            }else{
-                return false;
-            }
-        }
-
-        function openGreenDay(){
-            if(parseInt($inputDia.value) === 3 && $inputMes.value === "11" && $inputAno.value === "2017"){
-                toggleView($greenDayBox);
-                applyPhotos(document.querySelector("#greenDayImages"), "gd", "jpg", 9);
-                return true;
-            }else{
-                return false;
-            }
-        }
-
-        function openIbira2017(){
-            if($inputDia.value === "25" && $inputMes.value === "11" && $inputAno.value === "2017"){
-                toggleView($ibira2017Box);
-                return true;
-            }else{
-                return false;
-            }
         }
 
         function toggleOverlay(obj){
