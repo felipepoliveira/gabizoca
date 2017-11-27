@@ -14,6 +14,24 @@
     to{opacity: 1}
 }
 
+@keyframes dance-1{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    25%{
+        transform: rotate(10deg);
+    }
+
+    75%{
+        transform: rotate(-10deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
 *{
     color: white;
     font-family: "Ayuma2yk";
@@ -95,6 +113,16 @@ h1, h2, h3, h4, h5, h6{
 }
 h2{ font-size: 60px;}
 
+#ibirapuera-2017-box{
+    animation: dance-1 5s infinite;
+}
+
+img.center{
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
 #login-box{
     height: 500px;
 
@@ -136,6 +164,19 @@ input[type=text]{
     margin-top: 64px;
 }
 
+.overlay{
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.overlay.show{
+    display: block;
+}
+
 .view{
     display: none;
     opacity: 0;
@@ -144,7 +185,7 @@ input[type=text]{
 }
 
 .view.view-show{
-    display: unset;
+    display: block;
     opacity: 1;
 }
 

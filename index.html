@@ -30,6 +30,11 @@
             <div class="images-container" id="greenDayImages">
             </div>
         </div>
+        <div id="ibirapuera-2017-box" class="view">
+            <img src="images/ibira-2017.jpg" class="center" style="max-width: 800px;">
+        </div>
+        <div id="overlay" class="overlay"></div>
+        <audio src="audios/ibira-2017.mp3" id="audioIbira2017" loop="loop">
     </body>
     <script>
         var $inputDia = document.querySelector("#inputDia");
@@ -38,7 +43,11 @@
         var $main = document.querySelector("#main");
         var $anniversaryBox = document.querySelector("#anniversary-box");
         var $greenDayBox = document.querySelector("#greenday-box");
+        var $ibira2017Box = document.querySelector("#ibirapuera-2017-box");
         var $loginBox = document.querySelector("#login-box");
+
+        //Audios
+        var audioIbira2017 = document.querySelector("#audioIbira2017");
 
         document.querySelector("#btnheart").addEventListener('click', () => {
            
@@ -47,6 +56,11 @@
 
             }else if(openGreenDay()){
 
+            }else if(openIbira2017()){
+                audioIbira2017.play();
+                toggleOverlay({
+                    "background-image" : "url('images/snow.webp')"
+                });
             }
         });
 
@@ -81,13 +95,33 @@
         }
 
         function openGreenDay(){
-            if($inputDia.value === "03" && $inputMes.value === "11" && $inputAno.value === "2017"){
+            if(parseInt($inputDia.value) === 3 && $inputMes.value === "11" && $inputAno.value === "2017"){
                 toggleView($greenDayBox);
                 applyPhotos(document.querySelector("#greenDayImages"), "gd", "jpg", 9);
                 return true;
             }else{
                 return false;
             }
+        }
+
+        function openIbira2017(){
+            if($inputDia.value === "25" && $inputMes.value === "11" && $inputAno.value === "2017"){
+                toggleView($ibira2017Box);
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function toggleOverlay(obj){
+            
+            let o = document.querySelector("#overlay")
+            o.classList.toggle("show");
+
+            console.log(Object.keys(obj));
+            Object.keys(obj).forEach(prop => {
+                o.style[prop] = obj[prop];
+            });
         }
 
         function toggleView(box){
