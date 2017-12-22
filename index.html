@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <script src="app.js"></script>
     </head>
     <body class="black">
         <div id="main" class="flex-container view view-show">
@@ -33,100 +34,17 @@
         <div id="ibirapuera-2017-box" class="view">
             <img src="images/ibira-2017.jpg" class="center" style="max-width: 800px;">
         </div>
+        <div id="commitmentAlliance-box" class="view">
+            <div id="entregaAliancasImages">
+            </div>
+        </div>
+        <div id="dates" class="overlay opaque">
+            
+        </div>
         <div id="overlay" class="overlay"></div>
+        <div id="cheatBox">
+            <span>//</span><input type="text" id="inputCheat"/>
+        </div>
         <audio src="audios/ibira-2017.mp3" id="audioIbira2017" loop="loop">
     </body>
-    <script>
-        var $inputDia = document.querySelector("#inputDia");
-        var $inputMes = document.querySelector("#inputMes");
-        var $inputAno = document.querySelector("#inputAno");
-        var $main = document.querySelector("#main");
-        var $anniversaryBox = document.querySelector("#anniversary-box");
-        var $greenDayBox = document.querySelector("#greenday-box");
-        var $ibira2017Box = document.querySelector("#ibirapuera-2017-box");
-        var $loginBox = document.querySelector("#login-box");
-
-        //Audios
-        var audioIbira2017 = document.querySelector("#audioIbira2017");
-
-        var openDateCallbacks = [
-            () => {
-                if($inputDia.value === "12" && $inputMes.value === "11" && $inputAno.value === "2017"){
-                        document.body.classList.toggle("black");
-                        toggleView($anniversaryBox);
-
-                        return true;
-                }else{
-                    return false;
-                }
-            },
-
-            () => {
-                if(parseInt($inputDia.value) === 3 && $inputMes.value === "11" && $inputAno.value === "2017"){
-                    toggleView($greenDayBox);
-                    applyPhotos(document.querySelector("#greenDayImages"), "gd", "jpg", 9);
-                    return true;
-                }else{
-                    return false;
-                }
-            },
-
-            () => {
-                if($inputDia.value === "25" && $inputMes.value === "11" && $inputAno.value === "2017"){
-                    toggleView($ibira2017Box);
-                    audioIbira2017.play();
-                    toggleOverlay({
-                        "background-image" : "url('images/snow.gif')",
-                        "opacity" : "0.5"
-                    });
-                    return true;
-                }else{
-                    return false;
-                }
-            }
-        ];
-
-        document.querySelector("#btnheart").addEventListener('click', () => {
-            openDateCallbacks.forEach(cb => {
-                if(cb()){
-                    return;
-                }
-            });
-        });
-
-        function applyPhotos(where, prefix, ext, howMutch){
-            //Remove each child
-            Array(where.querySelectorAll("img")).forEach((c) => {
-                console.log(c);
-            });
-
-            //Apply all images
-            for(let i = 1; i <= howMutch; i++){
-                let image = new Image();
-                image.onload = () => {
-                    setTimeout(() => {
-                        where.appendChild(image);
-                    }, 500);
-                }
-                image.src = "images/" + prefix + "-" + i + "." + ext;
-            }
-
-        }
-
-        function toggleOverlay(obj){
-            
-            let o = document.querySelector("#overlay")
-            o.classList.toggle("show");
-
-            console.log(Object.keys(obj));
-            Object.keys(obj).forEach(prop => {
-                o.style[prop] = obj[prop];
-            });
-        }
-
-        function toggleView(box){
-            $main.classList.toggle("view-show");
-            box.classList.toggle("view-show");
-        }
-    </script>
 </html>

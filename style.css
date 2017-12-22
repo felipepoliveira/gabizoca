@@ -54,6 +54,41 @@ body.black{
     text-align: center;
 }
 
+#cheatBox{
+    align-items: center;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    position: fixed;
+    height: 38px;
+    width: 97vw;
+    z-index: 999;
+
+    transform: translateY(38px);
+}
+
+#cheatBox.show{
+    transform: translateY(0px);
+}
+
+#cheatBox input{
+    background-color: black;
+    font-family: 'Consolas';
+    font-size: 20px;
+    padding-left: 32px;
+    text-align: left;
+}
+
+#cheatBox span{
+    flex-basis: 44px;
+    flex-grow: 0;
+    font-size: 24px;
+}
+
+#cheatBox > *{
+    flex: 1;
+}
+
 .clear-text{
     color: rgb(45, 45, 45);
 }
@@ -82,6 +117,15 @@ body.black{
 
 #anniversary-box *{
     color: black;
+}
+
+.image-drop-container{
+    display: flex;
+}
+
+.image-drop-container > *{
+    flex: 1;
+    flex-grow: 0;
 }
 
 .flex-container{
@@ -162,6 +206,10 @@ input[type=text]{
 
 .ma-lg{
     margin-top: 64px;
+}
+
+*.opaque{
+    background-color: black;
 }
 
 .overlay{
